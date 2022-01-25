@@ -23,6 +23,18 @@ class User(AbstractUser):
         blank=True,
         max_length=255,
     )
+    address = models.ForeignKey(
+        "users.Address",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="user_address",
+    )
+    group = models.ManyToManyField(
+        "users.Group",
+        blank=True,
+        related_name="user_group",
+    )
 
     def get_absolute_url(self):
         return reverse("users:detail", kwargs={"username": self.username})
