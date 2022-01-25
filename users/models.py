@@ -25,9 +25,9 @@ class User(AbstractUser):
     )
     address = models.ForeignKey(
         "users.Address",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="user_address",
     )
     group = models.ManyToManyField(
